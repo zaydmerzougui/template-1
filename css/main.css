@@ -1,0 +1,447 @@
+/*--------start global css---------*/
+
+*,
+*::before,
+*::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-color: #10cab7;
+  --main-font: 1.2em;
+  --back-color: #f6f6f6;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: " work sans", sans-serif;
+}
+
+.intro,
+.contact {
+  min-height: 100vh;
+}
+
+.container {
+  width: 750px;
+  max-width: 80%;
+  padding-block: 1rem;
+  margin: 0 auto;
+}
+
+.speacial-heading {
+  font-size: 3em;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 54px;
+}
+
+@media screen and (min-width: 40em) {
+  .speacial-heading {
+    font-size: 6em;
+    color: gray;
+    margin: 0;
+  }
+}
+
+.speacial-heading + p {
+  margin-top: -1.5em;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/*--------end global css---------*/
+/*------start header-------*/
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo img {
+  max-width: 100%;
+  width: 70px;
+}
+
+.links {
+  position: relative;
+}
+
+.icon {
+  height: 30px;
+  width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon span {
+  background: black;
+  height: 2px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background: #000;
+  height: 2px;
+  top: 0;
+}
+
+.icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  background: black;
+  height: 2px;
+  bottom: 0;
+}
+
+.links ul {
+  list-style: none;
+  transform: scale(0);
+  position: absolute;
+  transition: transform 250ms;
+  transform-origin: right top;
+  background-color: #eee;
+  width: 150px;
+  right: 0;
+  top: calc(100% + 15px);
+  opacity: 0.8;
+  z-index: 100;
+}
+
+ul::before {
+  content: "";
+  border: 10px solid transparent;
+  border-bottom-color: #eee;
+  position: absolute;
+  top: -20px;
+  right: 0;
+  transform: scale(0);
+}
+
+div.links:hover ul,
+div.links:hover ul::before {
+  transform: scale(1);
+}
+
+ul a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  transition: transform 225ms;
+}
+
+ul li {
+  padding: 1em;
+  position: relative;
+}
+
+ul a:hover {
+  transform: translate(15px);
+}
+
+ul li:not(:last-child) {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.611);
+}
+
+@media screen and (min-width: 40em) {
+  .icon,
+  ul::before {
+    display: none;
+  }
+
+  .links ul {
+    display: flex;
+    position: static;
+    width: unset;
+    transform: scale(1);
+    background: transparent;
+  }
+
+  ul li:not(:last-child) {
+    border-bottom-color: transparent;
+  }
+
+  ul a:hover {
+    transform: translate(0);
+    color: var(--main-color);
+  }
+
+  li::before {
+    content: "";
+    position: absolute;
+    border-radius: 6px;
+    transform: scale(0, 1);
+    transition: transform 225ms;
+  }
+
+  li:hover::before {
+    width: 100%;
+    height: 2px;
+    background: var(--main-color);
+    top: 0;
+    left: 0;
+    transform: scale(1, 1);
+  }
+}
+/*------end header-------*/
+/*------start landing section-------*/
+main {
+  background-image: url(https://www.lightstalking.com/wp-content/uploads/matterhorn-2921923_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: calc(100vh - 63.5px);
+  isolation: isolate;
+}
+.intro {
+  background: var(--back-color);
+  padding-bottom: 9em;
+  text-align: center;
+}
+
+h1 {
+  color: var(--main-color);
+  padding: var(--main-font);
+}
+/*------end landing section-------*/
+
+/*------start features section---------*/
+.features {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  text-align: center;
+  padding-block: 0.5em 2em;
+  position: relative;
+}
+
+.features::before {
+  content: "";
+  background: var(--main-color);
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+}
+i {
+  color: var(--main-color);
+  margin-bottom: 1rem;
+}
+
+.feat {
+  padding: var(--main-font);
+  border-radius: 5px;
+}
+
+.features p {
+  color: var(--back-color);
+}
+
+.feat:hover {
+  box-shadow: 0px 0px 9px 0px black;
+}
+
+@media (min-width: 40em) {
+  .features {
+    flex-direction: row;
+  }
+}
+/*------end features section---------*/
+/*-------start services area-------*/
+.services {
+  position: relative;
+  text-align: center;
+  padding-block: 5rem;
+}
+
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  z-index: -1;
+}
+
+.service {
+  margin-top: 1em;
+  line-height: 1.6;
+}
+
+.services img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 40em) {
+  .services img {
+    display: block;
+  }
+
+  div.col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .service {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 1rem;
+  }
+
+  .services .img {
+    grid-area: 1/ 3/ 3/ 4;
+  }
+
+  .col h3 {
+    margin-bottom: 1rem;
+  }
+}
+/*-------end services area-------*/
+/*-------start portfolio area-------*/
+.portfolio {
+  background: var(--back-color);
+  text-align: center;
+  padding-block: 5rem;
+}
+
+.project {
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.project img {
+  width: 100%;
+}
+
+.portfolio a {
+  text-decoration: none;
+  color: unset;
+}
+
+.info {
+  background: white;
+  padding: 1em;
+  line-height: 1.6;
+}
+
+.projects {
+  display: grid;
+  justify-content: center;
+  gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+/*-------end portfolio area-------*/
+/*-------start about area-------*/
+.about {
+  background: white;
+  text-align: center;
+}
+
+.prim {
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.prim::after {
+  content: "";
+  position: absolute;
+  background: #10cab7;
+  width: 20%;
+  height: 2px;
+  bottom: -0.8rem;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+@media screen and (min-width: 40em) {
+  .content {
+    display: flex;
+    column-gap: 20px;
+  }
+}
+/*-------end about area-------*/
+/*-------start contact area-------*/
+.contact {
+  background: var(--back-color);
+  text-align: center;
+  padding-block: 3rem;
+  position: relative;
+}
+.contact a {
+  color: #10cab7;
+  text-decoration: none;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.contact h3 {
+  font-size: 3em;
+  columns: #2c4755;
+  margin-bottom: 0.5em;
+}
+
+.social {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 50%;
+  transform: translate(-50%);
+  color: gray;
+}
+
+.social i {
+  color: gray;
+}
+/*-------end contact area-------*/
+/*-------start footer area-------*/
+footer {
+  background: #2c4755;
+  color: #fff;
+}
+
+.footer {
+  display: grid;
+  padding: 2rem;
+  place-content: center;
+}
+
+.footer span {
+  color: #10cab7;
+}
+/*-------end contact area-------*/
